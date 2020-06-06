@@ -11,6 +11,7 @@ describe('appService', () => {
     }).compile();
 
     appService = await module.get<AppService>(AppService);
+    appService.setFizzBuzzConfig(3, 5);
   });
 
   it('given a list of numbers with no match in Fizz or Buzz, return the same list of numbers', () => {
@@ -27,5 +28,9 @@ describe('appService', () => {
       4,
       'FizzBuzz',
     ]);
+  });
+  it('Using a different fizz buzz numbers and checking if it works', () => {
+    appService.setFizzBuzzConfig(4, 7);
+    expect(appService.generateFizzBuzzList([4, 5])).toStrictEqual(['Fizz', 5]);
   });
 });
